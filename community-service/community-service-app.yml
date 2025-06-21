@@ -8,7 +8,7 @@ spec:
   
   # 소스: Git 저장소 정보
   source:
-    repoURL: https://github.com/LCA-PJT2/community-service.git
+    repoURL: https://github.com/LCA-PJT2/app-config.git
     targetRevision: HEAD  # 브랜치/태그/커밋 해시
     path: community-service/prd
       
