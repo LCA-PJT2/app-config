@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: community-service
-        image: suhyunkim7288/community-service:0.0.5
+        image: suhyunkim7288/community-service:1.0.0
         imagePullPolicy: Always
         env:
           - name: SPRING_PROFILES_ACTIVE
