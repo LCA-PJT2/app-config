@@ -13,7 +13,7 @@ data:
           mvc:
             routes:
               - id: test-service
-                uri: http://test-service:8080
+                uri: http://test-service-service:8080
                 predicates:
                   - Path=/api/test/**
                 filters:
