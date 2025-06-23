@@ -12,7 +12,9 @@ data:
         gateway:
           mvc:
             routes:
-              - id: community-service
-                uri: http://community-service:8080
+              - id: test-service
+                uri: http://test-service:8080
                 predicates:
-                  - Path=/comm/**
+                  - Path=/api/test/**
+                filters:
+                - AddAuthenticationHeader
