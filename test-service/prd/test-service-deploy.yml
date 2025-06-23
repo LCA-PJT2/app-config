@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: test-service
-        image: alswn26/test-service:0.0.0
+        image: alswn26/test-service:0.0.1
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
