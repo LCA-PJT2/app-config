@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: qna-service-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: qna-service
+  template:
+    metadata:
+      labels:
+        app: qna-service
+    spec:
+      containers:
+      - name: qna-service
+        image: bucoco/qna-service:0.0.3
+        imagePullPolicy: Always
+        env:
+        - name: SPRING_PROFILES_ACTIVE
+          value: dev
+        ports:
+        - containerPort: 8080
+
+        volumeMounts:
+          - mountPath: /etc/config
+            name: qna-service-config-volume
+          - mountPath: /etc/secret
+            name: qna-service-secret-volume
+
+      volumes:
+        - name: qna-service-config-volume
+          configMap:
+            name: qna-service-config
+            items:
+              - key: application-dev.yml
+                path: application-dev.yml
+        - name: qna-service-secret-volume
+          secret:
+            secretName: qna-service-secret
+            items:
+              - key: application-secret.yml
+                path: application-secret.yml
