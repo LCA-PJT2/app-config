@@ -6,7 +6,7 @@ data:
   application-dev.yml: |
     server:
       port: 8080
-    
+
     spring:
       cloud:
         gateway:
@@ -17,4 +17,12 @@ data:
                 predicates:
                   - Path=/api/test/**
                 filters:
-                - AddAuthenticationHeader
+                  - AddAuthenticationHeader
+              - id: community-service
+                uri: http://community-service-service:8080
+                predicates:
+                  - Path=/api/post/v1/**
+                  - Path=/api/like/v1/**
+                  - Path=/api/community/v1/**
+                filters:
+                  - AddAuthenticationHeader
