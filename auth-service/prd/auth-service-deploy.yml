@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: auth-service-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: auth-service
+  template:
+    metadata:
+      labels:
+        app: auth-service
+    spec:
+      containers:
+      - name: auth-service
+        image: damiiya/auth-service:0.0.1
+        imagePullPolicy: Always
+        env:
+        - name: SPRING_PROFILES_ACTIVE
+          value: dev
+        ports:
+        - containerPort: 8080
+
+        volumeMounts:
+          - mountPath: /etc/config
+            name: auth-service-config-volume
+          - mountPath: /etc/secret
+            name: auth-service-secret-volume
+
+      volumes:
+        - name: auth-service-config-volume
+          configMap:
+            name: auth-service-config
+            items:
+              - key: application-dev.yml
+                path: application-dev.yml
+        - name: auth-service-secret-volume
+          secret:
+            secretName: auth-service-secret
+            items:
+              - key: application-secret.yml
+                path: application-secret.yml
