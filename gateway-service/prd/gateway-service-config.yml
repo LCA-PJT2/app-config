@@ -40,3 +40,17 @@ data:
                     - Path=/api/comment/v1/**
                   filters:
                     - AddAuthenticationHeader
+
+                - id: answer-service
+                  uri: http://qna-service-service:8080
+                  predicates:
+                    - Path=/api/answer/v1/**
+                  filters:
+                    - AddAuthenticationHeader
+
+                - id: question-service
+                  uri: http://qna-service-service:8080
+                  predicates:
+                    - Path=/api/question/v1/**
+                  filters:
+                    - AddAuthenticationHeader
