@@ -54,3 +54,17 @@ data:
                     - Path=/api/question/v1/**
                   filters:
                     - AddAuthenticationHeader
+
+                - id: user-service
+                  uri: http://auth-service-service:8080
+                  predicates:
+                    - Path=/user/**
+                  filters:
+                    - AddAuthenticationHeader
+
+                - id: auth-service
+                  uri: http://auth-service-service:8080
+                  predicates:
+                    - Path=/auth/**
+                  filters:
+                    - AddAuthenticationHeader
