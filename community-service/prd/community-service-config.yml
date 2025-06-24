@@ -24,3 +24,8 @@ data:
 
       kafka:
         bootstrap-servers: k8s-external-kafka-service:9092
+    
+    logging:
+      level:
+        org.hibernate.SQL: DEBUG
+        org.hibernate.type.descriptor.sql: TRACE
