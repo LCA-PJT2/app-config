@@ -16,19 +16,20 @@ data:
     spring:
       cloud:
         gateway:
-          mvc:
-            routes:
-              - id: test-service
-                uri: http://test-service-service:8080
-                predicates:
-                  - Path=/api/test/**
-                filters:
-                  - AddAuthenticationHeader
-              - id: community-service
-                uri: http://community-service-service:8080
-                predicates:
-                  - Path=/api/post/v1/**
-                  - Path=/api/like/v1/**
-                  - Path=/api/community/v1/**
-                filters:
-                  - AddAuthenticationHeader
+          server:
+            webmvc:
+              routes:
+                - id: test-service
+                  uri: http://test-service-service:8080
+                  predicates:
+                    - Path=/api/test/**
+                  filters:
+                    - AddAuthenticationHeader
+                - id: community-service
+                  uri: http://community-service-service:8080
+                  predicates:
+                    - Path=/api/post/v1/**
+                    - Path=/api/like/v1/**
+                    - Path=/api/community/v1/**
+                  filters:
+                    - AddAuthenticationHeader
