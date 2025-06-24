@@ -40,7 +40,7 @@ data:
                   filters:
                     - AddAuthenticationHeader
 
-                - id: community
+                - id: community-comment
                   uri: http://community-service-service:8080
                   predicates:
                     - Path=/api/comment/v1/**
