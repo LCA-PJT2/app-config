@@ -21,3 +21,8 @@ data:
         generate-ddl: true # 오직 테스트 환경에서만 (spring.jpa.generate-ddl)
         show-sql: true
         open-in-view: false
+        
+    logging:
+      level:
+        org.hibernate.SQL: DEBUG
+        org.hibernate.type.descriptor.sql: TRACE
