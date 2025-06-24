@@ -7,21 +7,36 @@ data:
     server:
       port: 8080
 
-    logging:
-      level:
-        org.springframework.cloud.gateway: DEBUG
-        reactor.netty: DEBUG
-        org.springframework.http.server.reactive: DEBUG
-
     spring:
       cloud:
         gateway:
           server:
             webmvc:
               routes:
-                - id: community-service
+                - id: test-service
+                uri: http://test-service-service:8080
+                predicates:
+                  - Path=/api/test/**
+                filters:
+                  - AddAuthenticationHeader
+
+                - id: community-post
                   uri: http://community-service-service:8080
                   predicates:
                     - Path=/api/post/v1/**
+                  filters:
+                    - AddAuthenticationHeader
+
+                - id: community-like
+                  uri: http://community-service-service:8080
+                  predicates:
+                    - Path=/api/like/v1/**
+                  filters:
+                    - AddAuthenticationHeader
+
+                - id: community
+                  uri: http://community-service-service:8080
+                  predicates:
+                    - Path=/api/community/v1/**
                   filters:
                     - AddAuthenticationHeader
