@@ -26,23 +26,9 @@ data:
                   filters:
                     - AddAuthenticationHeader
                 
-                - id: community-post
+                - id: community-service
                   uri: http://community-service-service:8080
                   predicates:
                     - Path=/api/post/v1/**
-                  filters:
-                    - AddAuthenticationHeader
-
-                - id: community-like
-                  uri: http://community-service-service:8080
-                  predicates:
-                    - Path=/api/like/v1/**
-                  filters:
-                    - AddAuthenticationHeader
-
-                - id: community
-                  uri: http://community-service-service:8080
-                  predicates:
-                    - Path=/api/community/v1/**
                   filters:
                     - AddAuthenticationHeader
