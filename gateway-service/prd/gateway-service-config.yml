@@ -23,6 +23,6 @@ data:
                 predicates:
                   - Path=/api/post/v1/**
                   - Path=/api/like/v1/**
-                  - Path=/api/community/v1/**
+                  - Path=/api/comment/v1/**
                 filters:
                   - AddAuthenticationHeader
